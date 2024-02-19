@@ -1,1 +1,0 @@
-launcherlib.aar should be copied here.
