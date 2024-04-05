@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 BlackBerry Limited. All Rights Reserved.
+# Copyright (c) 2023 BlackBerry Limited. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
     :git => "https://github.com/blackberry/BlackBerry-Dynamics-React-Native-SDK.git",
     :tag => "#{s.version}"
   }
-  s.source_files = "BbdRNApplication/**/*.{h,m}"
+  s.source_files = "ios/BbdRNApplication/**/*.{h,m}"
   s.requires_arc = true
   s.dependency "React"
   s.dependency "BlackBerryDynamics"
