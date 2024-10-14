@@ -34,14 +34,39 @@
     // We shouldn't do any actions here.
   }
 
+  
   function checkAndExitOrContinue() {
-    var originalNpmConfigArgv = JSON.parse(process.env.npm_config_argv).original,
-      filteredOriginal = originalNpmConfigArgv.filter(function(val, i) {
-        return !['--save', '--verbose', '--d'].includes(val);
-      });
+    let isUsingYarn =
+      process.env.YARN_WRAP_OUTPUT !== undefined ||
+      process.env.npm_config_user_agent?.includes("yarn");
+    let isUsingNpm = process.env.npm_config_argv !== undefined;
 
-    if (!(filteredOriginal[1] && filteredOriginal[1].indexOf('BlackBerry-Dynamics-for-React-Native-Application') > -1 &&
-      (filteredOriginal.includes('i') || filteredOriginal.includes('install') || filteredOriginal.includes('add')))) {
+    let originalArgs = [];
+
+    if (isUsingNpm) {
+      originalArgs = JSON.parse(process.env.npm_config_argv).original;
+    } else if (isUsingYarn) {
+      originalArgs = process.argv.slice(2);
+    } else {
+      // lxp ci don't know what package manager is being used so i will exit the process
+      process.exit(1);
+    }
+
+    let filteredOriginal = originalArgs.filter(function (val) {
+      return !["--save", "--verbose", "--d"].includes(val);
+    });
+
+    if (
+      !(
+        filteredOriginal[1] &&
+        filteredOriginal[1].indexOf(
+          "BlackBerry-Dynamics-for-React-Native-Application"
+        ) > -1 &&
+        (filteredOriginal.includes("i") ||
+          filteredOriginal.includes("install") ||
+          filteredOriginal.includes("add"))
+      )
+    ) {
       process.exit(0);
     }
   }
