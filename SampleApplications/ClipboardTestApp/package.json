@@ -4,7 +4,7 @@
   "description": "BlackBerry Dynamics ClipboardTestApp sample",
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.66.4"
+    "react-native": "0.80.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
