@@ -11,7 +11,7 @@
     "js-base64": "^2.5.1",
     "rxjs": "^6.5.3",
     "async": "^2.6.1",
-    "shelljs": "^0.7.0"
+    "shelljs": "^0.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
